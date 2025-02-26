@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditi Dutt - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-md fixed top-0 left-0 w-full z-10">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold text-gray-800">Aditi Dutt</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#about" class="hover:text-blue-500">About</a></li>
+                    <li><a href="#portfolio" class="hover:text-blue-500">Portfolio</a></li>
+                    <li><a href="#resume" class="hover:text-blue-500">Resume</a></li>
+                    <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+        <img src="./img/Aditi%20Headshot.jpeg" alt="Aditi Dutt" class="w-40 h-40 rounded-full border-4 border-white shadow-lg mb-4">
+        <h2 class="text-5xl font-bold">Hello, I'm Aditi</h2>
+        <p class="text-lg mt-4">Data Scientist | Machine Learning | Big Data | AI</p>
+        <a href="#portfolio" class="mt-6 px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition duration-300">View My Work</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mx-auto py-20 px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800">About Me</h2>
+        <p class="mt-4 text-lg text-gray-600">I am a data scientist with expertise in Python, R, PySpark, and Big Data technologies. Passionate about building AI-driven solutions, optimizing business intelligence, and leveraging machine learning for impactful decision-making.</p>
+    </section>
+
+    <!-- Skills Summary -->
+    <section class="bg-gray-200 py-10 px-6 text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Skills Summary</h2>
+        <p class="mt-4 text-lg text-gray-600"><strong>Languages:</strong> Python, R, Java</p>
+        <p class="mt-2 text-lg text-gray-600"><strong>Technologies:</strong> Machine Learning, AI, Big Data, Predictive Modeling</p>
+        <p class="mt-2 text-lg text-gray-600"><strong>Tools:</strong> Power BI, Streamlit, MySQL, Spark</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800">My Work</h2>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold">Suicide Rate Predictions</h3>
+                <p class="mt-2 text-gray-600">Used R and WHO data to analyze suicide trends using statistical modeling.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold">Operational Control Platform</h3>
+                <p class="mt-2 text-gray-600">Automated compliance testing, reducing human hours by 25%.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold">Food Ordering System</h3>
+                <p class="mt-2 text-gray-600">Developed a Java-based ordering system to enhance user experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="container mx-auto py-20 px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800">Resume</h2>
+        <p class="mt-4 text-lg text-gray-600">View or download my resume below.</p>
+        <a href="your-resume.pdf" class="mt-6 inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition duration-300">Download Resume</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-200 py-20 px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800">Contact Me</h2>
+        <p class="mt-4 text-lg text-gray-600">Feel free to reach out for collaborations or job opportunities.</p>
+        <p class="mt-2 text-lg"><a href="mailto:aditidutt.nmims@gmail.com" class="text-blue-500">aditidutt.nmims@gmail.com</a></p>
+        <div class="mt-4">
+            <a href="https://linkedin.com/in/yourprofile" class="text-blue-500 hover:text-blue-700">LinkedIn</a> |
+            <a href="https://github.com/yourgithub" class="text-blue-500 hover:text-blue-700">GitHub</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <p>&copy; 2025 Aditi Dutt. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
