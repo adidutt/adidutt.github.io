@@ -32,14 +32,20 @@
             }
         }
 
-        // Apply stored theme on page load
-        document.addEventListener("DOMContentLoaded", function () {
-            if (localStorage.getItem("theme") === "dark") {
-                document.documentElement.classList.add("dark");
+        // Typewriter Effect for "Aditi Dutt"
+        function typeWriter() {
+            const text = "Aditi Dutt";
+            let index = 0;
+            const typewriterElement = document.getElementById("typewriter");
+            function type() {
+                if (index < text.length) {
+                    typewriterElement.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, 150);
+                }
             }
-            updateToggleButton();
-            typeQuote();
-        });
+            type();
+        }
 
         // Animated Data Scientist Quote
         function typeQuote() {
@@ -62,6 +68,33 @@
             }
             displayDataLines();
         }
+
+        // Apply stored theme and initialize animations on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("theme") === "dark") {
+                document.documentElement.classList.add("dark");
+            }
+            updateToggleButton();
+            typeWriter(); // Start the typewriter effect for "Aditi Dutt"
+
+            // Intersection Observer for the quote section
+            const quoteSection = document.getElementById("quote-section");
+            const quoteContainer = quoteSection.querySelector(".quote-container");
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        quoteContainer.classList.remove("hidden");
+                        quoteContainer.classList.add("visible");
+                        typeQuote(); // Trigger the quote animation
+                        observer.unobserve(entry.target); // Stop observing once triggered
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            });
+
+            observer.observe(quoteSection);
+        });
     </script>
     <style>
         /* Fallback for light mode */
@@ -73,6 +106,48 @@
         }
         html:not(.dark) .quote-text {
             color: #1f2937; /* Matches Tailwind's text-gray-800 */
+        }
+        html:not(.dark) section, html:not(.dark) h2, html:not(.dark) p {
+            color: #1f2937; /* Ensure text is dark in light mode */
+        }
+        html:not(.dark) #about, html:not(.dark) #resume {
+            background-color: #f3f4f6; /* Matches Tailwind's bg-gray-100 */
+        }
+        html:not(.dark) #skills {
+            background-color: #e5e7eb; /* Matches Tailwind's bg-gray-200 */
+        }
+        html:not(.dark) #portfolio {
+            background-color: #d1d5db; /* Matches Tailwind's bg-gray-300 */
+        }
+        html.dark body {
+            background-color: #111827; /* Matches Tailwind's dark:bg-gray-900 */
+        }
+        html.dark .quote-container {
+            background-color: #1f2937; /* Matches Tailwind's dark:bg-gray-800 */
+        }
+        html.dark .quote-text {
+            color: #f3f4f6; /* Matches Tailwind's dark:text-gray-100 */
+        }
+        html.dark section, html.dark h2, html.dark p {
+            color: #d1d5db; /* Matches Tailwind's dark:text-gray-300 */
+        }
+        html.dark #about, html.dark #resume {
+            background-color: #111827; /* Matches Tailwind's dark:bg-gray-900 */
+        }
+        html.dark #skills {
+            background-color: #1f2937; /* Matches Tailwind's dark:bg-gray-800 */
+        }
+        html.dark #portfolio {
+            background-color: #374151; /* Matches Tailwind's dark:bg-gray-700 */
+        }
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .visible {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
         }
         .fade-in {
             opacity: 0;
@@ -116,8 +191,8 @@
     </section>
 
     <!-- Animated Data Science Quote Section -->
-    <section class="container mx-auto py-16 px-6 text-center fade-in">
-        <div class="quote-container bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+    <section id="quote-section" class="container mx-auto py-16 px-6 text-center">
+        <div class="quote-container bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hidden">
             <div id="data-lines" class="text-sm text-gray-500 dark:text-gray-400"></div>
             <div id="quote" class="quote-text text-2xl italic font-light text-gray-800 dark:text-gray-100 mt-4"></div>
         </div>
@@ -167,34 +242,5 @@
     <footer class="bg-gray-800 text-white text-center py-6">
         <p>© 2025 Aditi Dutt. All rights reserved.</p>
     </footer>
-
-    <!-- Typewriter Effect Script -->
-    <script>
-        const text = "Aditi Dutt";
-        let index = 0;
-        function typeWriter() {
-            if (index < text.length) {
-                document.getElementById<|control617|>: "typewriter").innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, 150);
-            }
-        }
-        window.onload = typeWriter;
-    </script>
-
-    <!-- Fade-in Animation -->
-    <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(10px);
-            animation: fadeIn 1.5s forwards;
-        }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </body>
 </html>
