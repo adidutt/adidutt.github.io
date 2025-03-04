@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aditi Dutt - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="dist/styles.css" rel="stylesheet">
     <script>
-        // Dark Mode Toggle with Local Storage
+        // Dark Mode Toggle with Local Storage and Debugging
         function toggleDarkMode() {
             const html = document.documentElement;
+            console.log("Current theme:", localStorage.getItem("theme"));
+            console.log("Before toggle, has dark class:", html.classList.contains("dark"));
             if (html.classList.contains("dark")) {
                 html.classList.remove("dark");
                 localStorage.setItem("theme", "light");
@@ -16,6 +18,8 @@
                 html.classList.add("dark");
                 localStorage.setItem("theme", "dark");
             }
+            console.log("After toggle, has dark class:", html.classList.contains("dark"));
+            console.log("New theme:", localStorage.getItem("theme"));
             updateToggleButton();
         }
 
@@ -59,6 +63,29 @@
             displayDataLines();
         }
     </script>
+    <style>
+        /* Fallback for light mode */
+        html:not(.dark) body {
+            background-color: #f3f4f6; /* Matches Tailwind's bg-gray-100 */
+        }
+        html:not(.dark) .quote-container {
+            background-color: #ffffff; /* Matches Tailwind's bg-white */
+        }
+        html:not(.dark) .quote-text {
+            color: #1f2937; /* Matches Tailwind's text-gray-800 */
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 1.5s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-200 transition duration-300">
 
@@ -90,9 +117,9 @@
 
     <!-- Animated Data Science Quote Section -->
     <section class="container mx-auto py-16 px-6 text-center fade-in">
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+        <div class="quote-container bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
             <div id="data-lines" class="text-sm text-gray-500 dark:text-gray-400"></div>
-            <div id="quote" class="text-2xl italic font-light text-gray-800 dark:text-gray-100 mt-4"></div>
+            <div id="quote" class="quote-text text-2xl italic font-light text-gray-800 dark:text-gray-100 mt-4"></div>
         </div>
     </section>
 
@@ -120,13 +147,20 @@
             </div>
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition duration-300">
                 <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Operational Control Platform</h3>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">Automated compliance testing, reducing human hours by 25%.</p>
+                <p class="mt-2 text-gray-6100 dark:text-gray-300">Automated compliance testing, reducing human hours by 25%.</p>
             </div>
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition duration-300">
                 <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Food Ordering System</h3>
                 <p class="mt-2 text-gray-600 dark:text-gray-300">Developed a Java-based ordering system to enhance user experience.</p>
             </div>
         </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="container mx-auto py-20 px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-300">Resume</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Download my resume to learn more about my experience and skills.</p>
+        <a href="./data/AditiDutt_Resume.pdf" download class="mt-8 inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">Download Resume</a>
     </section>
 
     <!-- Footer -->
@@ -140,7 +174,7 @@
         let index = 0;
         function typeWriter() {
             if (index < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(index);
+                document.getElementById<|control617|>: "typewriter").innerHTML += text.charAt(index);
                 index++;
                 setTimeout(typeWriter, 150);
             }
